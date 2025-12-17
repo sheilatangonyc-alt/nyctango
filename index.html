@@ -8,6 +8,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
     <style>
+        img {
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.35));
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -66,16 +72,32 @@
             z-index: 2;
             max-width: 800px;
         }
+
+        .hero-text-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
         
         .hero h1 {
             font-size: 4.5rem;
-            margin-bottom: 0.3rem;
+            margin: 0;
             font-weight: 300;
             letter-spacing: 4px;
             color: #ffffff;
             text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
             font-family: 'Cormorant Garamond', Georgia, serif;
             text-transform: uppercase;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: #f5f5f5;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.7);
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-style: italic;
+            margin: -1.3rem 0 0 0 !important;
         }
         
         .hero p {
@@ -86,24 +108,27 @@
             letter-spacing: 3px;
             font-family: 'Cormorant Garamond', Georgia, serif;
             font-style: italic;
+            margin: 0;
         }
 
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 0 2rem 2rem 2rem;
+            padding: 2rem;
             position: relative;
             z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
         }
         
         section {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(0, 0, 0, 0.5);
             padding: 2.5rem;
-            margin-bottom: 2rem;
             border-radius: 20px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.25);
-            border: 1px solid rgba(255, 107, 107, 0.15);
-            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(30px);
+            backdrop-filter: blur(30px);
         }
         
         h2 {
@@ -136,29 +161,40 @@
         .about-image {
             width: 300px;
             height: auto;
-            border-radius: 12px;
             flex-shrink: 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            border: 3px solid #ff6b6b;
         }
         
         .about-text {
             flex: 1;
         }
 
-        .about-text p {
-            font-size: 1.1rem;
-            color: #2d2d2d;
+        p {
+            font-size: 1.05rem;
+            color: #dcdcdc;
             font-weight: 400;
+            margin: 0.75rem 0;
         }
         
         @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+                gap: 1.5rem;
+            }
+
+            section {
+                padding: 2rem;
+            }
+
             .hero h1 {
                 font-size: 2.5rem;
             }
             
             .hero p {
                 font-size: 1.1rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.3rem;
             }
             
             .about-content {
@@ -170,19 +206,22 @@
             }
         }
         
-        .event-card {
-            background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-            border-radius: 16px;
-            border-left: 5px solid #ff6b6b;
-            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.15);
-            transition: transform 0.2s, box-shadow 0.2s;
+        #events {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
-        .event-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.25);
+        .event-card {
+            /* background: linear-gradient(135deg, #fec0ff 0%, #ffffff 100%); */
+            background: rgba(0, 0, 0, 0.5);
+
+            border: 1px solid #8a3838;
+            padding: 2rem;
+            border-radius: 16px;
+            /* border-left: 5px solid #ff6b6b; */
+            /* box-shadow: 0 4px 12px rgba(255, 107, 107, 0.15); */
+            transition: transform 0.2s, box-shadow 0.2s;
         }
         
         .event-card h3 {
@@ -194,9 +233,7 @@
         }
         
         .event-card p {
-            margin: 0.5rem 0;
-            color: #4a4a4a;
-            font-size: 1.05rem;
+            color: #e3e3e3;
         }
         
         .event-card .time {
@@ -205,11 +242,6 @@
             font-size: 1.1rem;
         }
 
-        #contact p {
-            color: #2d2d2d;
-            margin: 0.75rem 0;
-            font-size: 1.05rem;
-        }
 
         #contact strong {
             color: #ff6b6b;
@@ -276,8 +308,8 @@
             color: #fff;
             text-align: center;
             padding: 2.5rem;
-            margin-top: 3rem;
-            border-top: 3px solid #ff6b6b;
+            margin-top: 2rem;
+            border-top: 3px solid #603a6f;
         }
 
         footer p {
@@ -307,35 +339,41 @@
     
     <div class="hero">
         <div class="hero-content">
-            <h1>Learn Argentine Tango</h1>
-            <p>Embrace. Connect. Create.</p>
+            <div class="hero-text-group">
+                <p>Embrace. Connect. Create.</p>
+                <h1>Learn Tango</h1>
+                <p class="hero-subtitle">with Sheila</p>
+            </div>
         </div>
     </div>
     
     <div class="container">
         <section id="about">
-            <h2>About Me</h2>
+            <h2>About Sheila</h2>
             <div class="about-content">
                 <img src="./sheilachair.jpg" alt="Tango dancers in an intimate embrace" class="about-image">
                 <div class="about-text">
-                    <p>Sheila Solis-Arroyo is an NYC based Argentine tango dancer, teacher, and performer. Sheila has studied tango extensively for the past eight years. With a deep passion for this beautiful art form, Sheila creates a warm and welcoming environment for dancers of all levels. Whether you're taking your first steps or refining your technique, you'll find dedicated instruction and a supportive community where you can grow and express yourself through tango.</p>
-                    <p style="margin-top: 1rem; font-weight: 500; color: #ff6b6b;">All are welcome here. This is an LGBTQ+ inclusive space where everyone can dance and connect authentically.</p>
+                    <p>Sheila (Shay-la) Solis-Arroyo is an NYC based Argentine tango dancer, teacher, and performer. Sheila has studied tango extensively for the past eight years. With a deep passion for this beautiful art form, Sheila creates a warm and welcoming environment for dancers of all levels. Whether you're taking your first steps or refining your technique, you'll find dedicated instruction and a supportive community where you can grow and express yourself through tango.</p>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <p style="margin-top: 1rem; font-weight: 500; color: #ff6b6b;max-width:375px"> Sheila fosters inclusive and affirming spaces for all tango dancers. Gender roles are fluid and adaptable to each dancer's identity and expression. Sheila encourages dancers to explore both leading and following roles, embracing the full spectrum of tango's rich dynamics.</p>
+                        <!-- <img src="./icons8-lgbt-48.png"/> -->
+                    </div>
                 </div>
             </div>
         </section>
         
-        <section id="what-is-tango">
+        <!-- <section id="what-is-tango">
             <h2>What is Tango?</h2>
             <div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap;">
-                <img src="./amy.JPG" alt="Tango dancers" style="width: 300px; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 3px solid #ff6b6b; object-fit: cover;">
+            <img src="./amy.JPG" alt="Tango dancers" style="width: min(300px, 100%); height: auto;">
                 <div style="flex: 1; min-width: 300px;">
                     <p>Tango is a passionate partner dance that originated in the late 19th century along the border between Argentina and Uruguay. It's characterized by close embrace, improvisation, and the profound connection between partners. A milonga is a social tango dance event where dancers gather to share the floor, typically featuring tandas (sets of songs) separated by cortinas (short musical breaks). It's more than just dancing—it's a conversation without words, an embrace that tells a story.</p>
                 </div>
             </div>
-        </section>
+        </section> -->
         
         <section id="events">
-            <h2>Upcoming Events</h2>
+            <h2>Upcoming Events</h2> <a href="https://calendar.google.com/calendar/u/1?cid=NTFmMjkyODNkYzkzYTliZGVlMTRlZmU4NDZiZDI5NTEzZmJlMjU0NmI1M2Q4MWY1YTc5OTUzYTcxNTJkMjQxZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t">Complete calendar</a>
             
             <div class="event-card">
                 <h3>Weekly Classes</h3>
@@ -348,10 +386,10 @@
             <div class="event-card">
                 <h3>La Ventanta - Monthly Milonga</h3>
                 <div style="display: flex; gap: 1.5rem; align-items: flex-start; flex-wrap: wrap;">
-                    <img src="./laventana.png" alt="La Ventana Milonga" style="width: 250px; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); object-fit: cover;">
+                    <img src="./laventana.png" alt="La Ventana Milonga" style="width: min(300px, 100%); height: auto; border-radius: 8px; object-fit: cover; filter: brightness(1.3);">
                     <div style="flex: 1; min-width: 250px;">
                         <p class="time"> Every Second Saturday, 3:00 PM - 7:00 PM</p>
-                        <p>Join Amy Liu Pathak and I for a fun afternoon milonga near Prospect Park. Coffee, tea and snacks are provided.</p>
+                        <p>Join us for a fun afternoon milonga near Prospect Park. Coffee, tea and snacks are provided.</p>
                         <p><strong>Entry:</strong> $25 general admission, $5 discount for students and queer tango dancers</p>
                         <p><strong>Where:</strong> Studio Contro - 623 Bergen Street, Brooklyn, NY</p>
                     </div>
@@ -359,11 +397,15 @@
             </div>
 
             <div class="event-card">
-                <h3>Private Lessons</h3>
-                <p class="time">Available by Appointment</p>
-                <p>One-on-one instruction tailored to your goals and skill level. Perfect for accelerating your progress, preparing for performances, or working on specific techniques. Singles and couples welcome.</p>
-                <p><strong>Contact:</strong> sheila.tangonyc@gmail.com to schedule</p>
-                <a href="mailto:sheila.tangonyc@gmail.com?subject=Private Lesson Inquiry" style="display: inline-block; margin-top: 1rem; padding: 0.75rem 1.5rem; background: #ff6b6b; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);">Sign Up for Private Lessons</a>
+                <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
+                <div>
+                    <h3>Private Lessons</h3>
+                    <p class="time">Available by Appointment</p>
+                    <p>One-on-one instruction tailored to your goals and skill level. Perfect for accelerating your progress, preparing for performances, or working on specific techniques. Singles and couples welcome.</p>
+                    <a href="mailto:sheila.tangonyc@gmail.com?subject=Private Lesson Inquiry" style="display: inline-block; margin-top: 1rem; padding: 0.75rem 1.5rem; background: #ff6b6b; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);">Inquire for Private Lessons</a>
+                </div>
+                <img src="./amy.JPG" alt="Tango dancers" style="width: min(300px, 100%); height: auto;">
+                </div>
             </div>
             
             <div class="event-card">
@@ -374,30 +416,73 @@
             </div>
         </section>
         
-        <section id="contact">
-            <h2>Get in Touch</h2>
-            <p>Ready to start your tango journey? Have questions about our classes or events?</p>
-            <p><strong>Email:</strong> sheila.tangonyc@gmail.com</p>
-            <div style="display: flex; gap: 1.5rem; align-items: center; margin-top: 1.5rem; flex-wrap: wrap;">
-                <a href="https://instagram.com/sheila.tango" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #ff6b6b; font-weight: 600; transition: transform 0.2s;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                    </svg>
-                    @sheila.tango
-                </a>
-                <a href="https://facebook.com/profile.php" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #ff6b6b; font-weight: 600; transition: transform 0.2s;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                    </svg>
-                    Sheila Solis-Arroyo
-                </a>
-            </div>
-        </section>
+<section id="contact">
+    <h2>Contact Us</h2>
+    
+    <form id="contactForm" style="max-width: 600px; margin: 2rem auto;">
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <input 
+                type="text" 
+                name="name" 
+                placeholder="Name" 
+                required
+                style="padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px;"
+            >
+            
+            <input 
+                type="email" 
+                name="email" 
+                placeholder="Email*" 
+                required
+                style="padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px;"
+            >
+            
+            <textarea 
+                name="message" 
+                placeholder="Your Message" 
+                rows="5"
+                required
+                style="padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px; resize: vertical;"
+            ></textarea>
+            
+            <label style="display: flex; align-items: center; gap: 0.5rem; text-align: left;">
+                <input type="checkbox" name="subscribe">
+                <span>Sign up for our email list for updates, promotions, and more.</span>
+            </label>
+            
+            <button 
+                type="submit"
+                style="padding: 12px 30px; background-color: #ff6b6b; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: 600; transition: background-color 0.3s;"
+                onmouseover="this.style.backgroundColor='#ff5252'"
+                onmouseout="this.style.backgroundColor='#ff6b6b'"
+            >
+                Send
+            </button>
+        </div>
+    </form>
+    
+    <div style="margin-top: 3rem;">
+        <div style="display: flex; gap: 1.5rem; align-items: center; margin-top: 1.5rem; flex-wrap: wrap; justify-content: center;">
+            <a href="https://instagram.com/sheila.tango" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #ff6b6b; font-weight: 600; transition: transform 0.2s;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                @sheila.tango
+            </a>
+            <a href="https://facebook.com/profile.php" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #ff6b6b; font-weight: 600; transition: transform 0.2s;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+                Sheila Solis-Arroyo
+            </a>
+        </div>
+    </div>
+</section>
     </div>
     
-    <footer>
+    <!-- <footer>
         <p>&copy; 2025 Learn Argentine Tango. All rights reserved.</p>
         <p>Follow us on social media for updates and videos!</p>
-    </footer>
+    </footer> -->
 </body>
 </html>
