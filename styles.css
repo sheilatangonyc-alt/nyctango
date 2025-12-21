@@ -151,7 +151,15 @@ h2::after {
     gap: 2rem;
     align-items: flex-start;
 }
-
+.calendar-wrapper {
+    filter: invert(1) hue-rotate(180deg);
+    border-radius: 16px;
+    /* background-color:#ffffff; */
+    /* padding: 2rem; */
+    /* border: 1px solid #8a3838; */
+    overflow: hidden;
+   
+}
 .about-image {
     width: 300px;
     height: auto;
